@@ -73,6 +73,7 @@ const Photos = () => {
         <div className='elements'>
             <Link to="/photos/create"><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Photos</h1>
+            <div className='actions'>
             <div className='sort'>
                 <label htmlFor="sort">Sort by:</label>
                 <select name="sort" id="sort" className='form-input sort-input' onChange={handleSort}>
@@ -82,7 +83,9 @@ const Photos = () => {
             </div>
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} className='search-icon' />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input'></input>            </div>
+                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input'></input>            
+            </div>
+            </div>
             {
                 filteredPhotos.map(photo => (
                     <div key={photo._id} className='item'>

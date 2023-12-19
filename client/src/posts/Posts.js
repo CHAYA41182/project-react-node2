@@ -68,17 +68,7 @@ const Posts = () => {
         fetchPosts()
     }, [])
 
-    if (filteredPosts.length === 0)
-        return <div className='elements'>
-            <Link to="/posts/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
-            <h1>Posts</h1>
-            <div className='search'>
-                <FontAwesomeIcon icon={faSearch} />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
-            </div>
-            <h1>no have post match your search</h1>
 
-        </div>
 
     return (
         <div className='elements'>
@@ -96,23 +86,27 @@ const Posts = () => {
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} />
                 <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
-            </div>            {
-                filteredPosts.map(post => (
-                    <div key={post.id} className='item'>
-                        <div className='texts'>
-                            <div className='title' onClick={(e) => { navigate(`/posts/${post._id}`) }}  >
-                                <div className='char' >{post.title[0]}</div>
-                                <h3>{post.title}</h3>
+            </div>
+            {
+                filteredPosts.length === 0 ?
+                    <h1 className='no-results'>No posts matching your search</h1>
+                    :
+                    filteredPosts.map(post => (
+                        <div key={post.id} className='item'>
+                            <div className='texts'>
+                                <div className='title' onClick={(e) => { navigate(`/posts/${post._id}`) }}  >
+                                    <div className='char' >{post.title[0]}</div>
+                                    <h3>{post.title}</h3>
+                                </div>
+                                <h5 className='description'>{post.author}</h5>
+                                <p className='description'>{(String(post.body).length > 300) ? String(post.body).substring(0, 300) + '...' : post.body}</p>
                             </div>
-                            <h5 className='description'>{post.author}</h5>
-                            <p className='description'>{(String(post.body).length > 300) ? String(post.body).substring(0, 300) + '...' : post.body}</p>
+                            <div className='btns'>
+                                <button onClick={handleEdit} id={post._id} ><FontAwesomeIcon icon={faEdit} /></button>
+                                <button onClick={handleDelete} id={post._id} ><FontAwesomeIcon icon={faTrash} /></button>
+                            </div>
                         </div>
-                        <div className='btns'>
-                            <button onClick={handleEdit} id={post._id} ><FontAwesomeIcon icon={faEdit} /></button>
-                            <button onClick={handleDelete} id={post._id} ><FontAwesomeIcon icon={faTrash} /></button>
-                        </div>
-                    </div>
-                ))
+                    ))
             }
         </div>
     );

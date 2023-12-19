@@ -398,6 +398,17 @@ menu {
     gap: 10px;
 }
 
+.actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.sort-input{
+    width: 200px !important;
+}
 
 
 
