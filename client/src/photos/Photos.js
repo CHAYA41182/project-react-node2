@@ -57,17 +57,6 @@ const Photos = () => {
         fetchPhotos();
     }, []);
 
-    if (filteredPhotos.length === 0) return <div className='elements'>
-        <Link to="/photos/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
-        <div className='search'>
-            <h1>Photos</h1>
-            <div className='search'>
-                <FontAwesomeIcon icon={faSearch} className='search-icon' />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
-            </div>
-            <h1 className='no-results'>No photos matching your search</h1>
-        </div>
-    </div>;
 
     return (
         <div className='elements'>
@@ -87,6 +76,7 @@ const Photos = () => {
             </div>
             </div>
             {
+                filteredPhotos.length === 0 ? <h1 className='no-results'>No have photos matching your search</h1> :
                 filteredPhotos.map(photo => (
                     <div key={photo._id} className='item'>
                         <div className='texts'>
