@@ -72,16 +72,6 @@ const Users = () => {
         fetchUsers()
     }, [])
 
-    if (filteredUsers.length === 0)
-        return <div className='elements'>
-            <Link to="/users/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
-            <h1>Users</h1>
-            <div className='search'>
-                <FontAwesomeIcon icon={faSearch} className='search-icon' />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
-            </div>
-            <h1 className='no-results'>No have users matching your search</h1>
-        </div>
 
     return (
         <div className='elements'>
@@ -97,10 +87,11 @@ const Users = () => {
             </div>
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} className='search-icon' />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
+                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='sort-input form-input' />
                            </div>
             {
-                users.map(user => (
+                filteredUsers.length === 0 ? <h3>No have users matching your search</h3> :
+                filteredUsers.map(user => (
                     <div key={user.id} className='item'>
                         <div className='texts'>
                             <div className='title' onClick={(e) => { navigate(`/users/${user._id}`) }}  >

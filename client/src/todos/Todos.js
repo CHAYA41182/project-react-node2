@@ -73,20 +73,6 @@ const Todos = () => {
         fetchTodos()
     }, [])
 
-    // Now you can use todos.map in your render method
-    if (filteredTodos.length === 0)
-        return (
-            <div className='elements'>
-                <Link to="/todos/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
-                <h1>Todos</h1>
-                <div className='search'>
-                    <FontAwesomeIcon icon={faSearch} className='search-icon' />
-                    <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input'  />
-                </div>
-                <h1 className='no-results'>No have todos matching your search</h1>
-            </div>
-        )
-
 
     return (
         <div className='elements'>
@@ -94,9 +80,10 @@ const Todos = () => {
             <h1>Todos</h1>
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} className='search-icon' />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
+                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='sort-input form-input' />
             </div>
             {
+                filteredTodos.length === 0 ? <div className='no-results' >No have todos matching your search</div> :
                 filteredTodos.map(todo => (
                     <div key={todo.id} className='item'>
                         <div className='texts'>

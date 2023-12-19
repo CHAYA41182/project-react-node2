@@ -76,7 +76,7 @@ const Posts = () => {
             <h1>Posts</h1>
             <div className='sort'>
                 <label htmlFor="sort">Sort by:</label>
-                <select name="sort" id="sort" className='form-input sort-input' onChange={handleSort}>
+                <select name="sort" id="sort" className='sort-input form-input' onChange={handleSort}>
                     <option value="title">Title</option>
                     <option value="body">Body</option>
                     <option value="author">Author</option>
