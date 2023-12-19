@@ -25,7 +25,7 @@ const getUser = async (req,res)=>{
 
 const createUser = async (req,res)=>{
     try{
-       const {name, email, password, roles} = req.body
+       const {name, email, password, roles, phone} = req.body
          if(!name) return res.status(400).json({message:"name is required"})
          if(!password) return res.status(400).json({message:"password is required"})
          if(!roles) return res.status(400).json({message:"roles is required"})
@@ -35,7 +35,8 @@ const createUser = async (req,res)=>{
             name,
             email,
             password,
-            roles
+            roles,
+            phone
         })
     
         await newUser.save()
@@ -50,12 +51,13 @@ const updateUser = async (req,res)=>{
     try{
         const user = await User.findById(req.params.id)
         if(!user) return res.json({message:"user not found"})
-        const {name, email, password, roles} = req.body
+        const {name, email, password, roles, phone} = req.body
 
         if(name) user.name = name
         if(email) user.email = email
         if(password) user.password = password
         if(roles) user.roles = roles
+        if(phone) user.phone = phone
 
 
         await user.save()
