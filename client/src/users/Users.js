@@ -55,6 +55,19 @@ const Users = () => {
         navigate(`/users/${id}/edit`)
     }
 
+    const handleSort = (e) => {
+        console.log(e.target.value)
+        if (e.target.value === 'name') {
+            setFilteredUsers(users.sort((a, b) => a.name.localeCompare(b.name)))
+        }
+        else if (e.target.value === 'email') {
+            setFilteredUsers(users.sort((a, b) => a.email.localeCompare(b.email)))
+        }
+        else if (e.target.value === 'phone') {
+            setFilteredUsers(users.sort((a, b) => a.phone.localeCompare(b.phone)))
+        }
+    }
+
     useEffect(() => {
         fetchUsers()
     }, [])
@@ -63,6 +76,16 @@ const Users = () => {
         return <div className='elements'>
             <Link to="/users/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Users</h1>
+            <div className='sort'>
+                <label htmlFor="sort">Sort by:</label>
+                <select name="sort" id="sort" className='form-input sort-input' onChange={handleSort}>
+                    <option value="name">Name</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                </select>
+            </div>
+
+
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} className='search-icon' />
                 <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />

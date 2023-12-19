@@ -64,6 +64,13 @@ const Photos = () => {
         <div className='elements'>
             <Link to="/photos/create"><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Photos</h1>
+            <div className='sort'>
+                <label htmlFor="sort">Sort by:</label>
+                <select name="sort" id="sort" className='form-input sort-input' onChange={handleSort}>
+                    <option value="name">title</option>
+                    <option value="album">album</option>
+                </select>
+            </div>
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} className='search-icon' />
                 <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input'></input>            </div>
