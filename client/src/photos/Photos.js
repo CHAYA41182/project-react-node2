@@ -44,6 +44,15 @@ const Photos = () => {
         navigate(`/photos/${id}/edit`);
     };
 
+    const handleSort = (e) => {
+        console.log(e.target.value);
+        if (e.target.value === 'name') {
+            setFilteredPhotos(photos.sort((a, b) => a.title.localeCompare(b.title)));
+        } else {
+            setFilteredPhotos(photos.sort((a, b) => a.album.localeCompare(b.album)));
+        }
+    }
+
     useEffect(() => {
         fetchPhotos();
     }, []);
