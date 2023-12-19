@@ -76,16 +76,6 @@ const Users = () => {
         return <div className='elements'>
             <Link to="/users/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Users</h1>
-            <div className='sort'>
-                <label htmlFor="sort">Sort by:</label>
-                <select name="sort" id="sort" className='form-input sort-input' onChange={handleSort}>
-                    <option value="name">Name</option>
-                    <option value="email">Email</option>
-                    <option value="phone">Phone</option>
-                </select>
-            </div>
-
-
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} className='search-icon' />
                 <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
@@ -97,6 +87,14 @@ const Users = () => {
         <div className='elements'>
             <Link to="/users/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Users</h1>
+            <div className='sort'>
+                <label htmlFor="sort">Sort by:</label>
+                <select name="sort" id="sort" className='form-input sort-input' onChange={handleSort}>
+                    <option value="name">Name</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                </select>
+            </div>
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} className='search-icon' />
                 <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
