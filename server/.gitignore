@@ -1,0 +1,4 @@
+node_modules
+.env
+public
+Deleting_process_running_on_certain_port.bat
