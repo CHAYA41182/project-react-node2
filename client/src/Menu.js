@@ -4,7 +4,6 @@ import { faUser, faCheck, faNewspaper, faCamera, faHome} from '@fortawesome/free
 import React from "react";
 
 const Menue = () => {
-    const [checked, setChecked] = React.useState(false);
     return <menu className="menu">
         <ul >
             <li><Link to="/" className="home-li" ><FontAwesomeIcon icon={faHome} /> Home</Link></li>
