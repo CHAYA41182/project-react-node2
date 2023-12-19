@@ -17,6 +17,7 @@ const UpdateUser = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const isAdminRef = useRef();
+    const phoneRef = useRef();
 
     const fetchUser = async () => {
         try {
@@ -45,7 +46,9 @@ const UpdateUser = () => {
             name: nameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
-            roles:roles
+            roles:roles,
+            phone: phoneRef.current.value
+
         };
         
        await axios.put(`http://localhost:7001/api/users/${id}`,user).then(()=>{
@@ -67,7 +70,8 @@ const UpdateUser = () => {
                     <input type="email" name="email" className="form-control" required defaultValue={user.email} ref={emailRef} />
                     <label htmlFor="password">Password</label>
                     <input type="text" name="password" className="form-control" required defaultValue={user.password} ref={passwordRef} />
-                    <br />
+                    <label htmlFor="phone">Phone</label>
+                    <input type="text" name="phone" className="form-control" defaultValue={user.phone}  ref={phoneRef} />
                     <input type="checkbox" name="isAdmin" className="form-check-input" defaultChecked={user.isAdmin} ref={isAdminRef} />
                     <label htmlFor="isAdmin">isAdmin</label>
                     <br />
