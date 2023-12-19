@@ -12,8 +12,6 @@ const Menue = () => {
             <li><Link to="/todos" ><FontAwesomeIcon icon={faCheck} /> Tasks </Link></li>
             <li><Link to="/posts" ><FontAwesomeIcon icon={faNewspaper} /> Posts</Link></li>
             <li><Link to="/photos" ><FontAwesomeIcon icon={faCamera} /> Photos</Link></li>
-            
-
         </ul>
     </menu>
 }
