@@ -59,9 +59,7 @@ const CreateUser = () => {
                     <div className="roles-container">
                     <input type="checkbox" name="isAdmin" className="form-check-input" ref={isAdminRef} />
                     <label htmlFor="isAdmin">isAdmin</label>
-                    </div>
-
-                    
+                    </div>         
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">Create</button>
                     </div>
