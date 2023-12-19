@@ -55,6 +55,7 @@ const SingleUser = () => {
                     <h1>{user.name}</h1>
                 </div>
                 <h3>{user.email}</h3>
+                <h3>{user.phone}</h3>
                 <h3>{user.password}</h3>
                 <div className='tags'>
                 {user.roles && user.roles.map(role => <span className='tag' key={role}>  #{role}  </span>)}
