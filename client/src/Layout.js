@@ -3,8 +3,8 @@ import Menue from "./Menu";
 
 const Layout = () => {
     return <div className="page" >
-        <Menue minWidth='20%' />
-        <Outlet width="auto" />
+        <Menue  />
+        <Outlet width="auto" className="outlet" />
     </div>
 };
 

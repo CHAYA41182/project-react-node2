@@ -69,7 +69,7 @@ const SingleTodo = () => {
         <div className="single-container">
             <Link to="/todos" ><FontAwesomeIcon icon={faRightFromBracket} /></Link>
             <div className='texts'>
-                <div className='title' >
+                <div className='' >
                     <div className='icon' >{todo.icon}</div>
                     <h1  >{todo.title}</h1>
                 </div>

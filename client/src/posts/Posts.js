@@ -49,13 +49,13 @@ const Posts = () => {
     const handleSort = (e) => {
         console.log(e.target.value)
         if (e.target.value === 'title') {
-            setFilteredPosts(posts.sort((a, b) => a.title.localeCompare(b.title)))
+            setFilteredPosts([...posts].sort((a, b) => a.title.localeCompare(b.title)))
         }
         else if (e.target.value === 'body') {
-            setFilteredPosts(posts.sort((a, b) => a.body.localeCompare(b.body)))
+            setFilteredPosts([...posts].sort((a, b) => a.body.localeCompare(b.body)))
         }
         else if (e.target.value === 'author') {
-            setFilteredPosts(posts.sort((a, b) => a.author.localeCompare(b.author)))
+            setFilteredPosts([...posts].sort((a, b) => (a.author || '').localeCompare(b.author || '')))
         }
     }
 
@@ -74,6 +74,11 @@ const Posts = () => {
         <div className='elements'>
             <Link to="/posts/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Posts</h1>
+            <div className='actions'>
+            <div className='search'>
+                <FontAwesomeIcon icon={faSearch} />
+                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
+            </div>
             <div className='sort'>
                 <label htmlFor="sort">Sort by:</label>
                 <select name="sort" id="sort" className='sort-input form-input' onChange={handleSort}>
@@ -82,11 +87,9 @@ const Posts = () => {
                     <option value="author">Author</option>
                 </select>
             </div>
-
-            <div className='search'>
-                <FontAwesomeIcon icon={faSearch} />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input' />
             </div>
+
+
             {
                 filteredPosts.length === 0 ?
                     <h1 className='no-results'>No posts matching your search</h1>

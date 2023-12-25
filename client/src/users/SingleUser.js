@@ -51,7 +51,7 @@ const SingleUser = () => {
         <div className="single-container">
             <Link to="/users" ><FontAwesomeIcon icon={faRightFromBracket} /></Link>
             <div className='texts'>
-                <div className='title' >
+                <div className='' >
                     <h1>{user.name}</h1>
                 </div>
                 <h3>{user.email}</h3>

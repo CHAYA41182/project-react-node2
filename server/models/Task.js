@@ -30,7 +30,7 @@ const taskSchema = new Schema({
     
     date: {
         type: Date,
-        default: () => Date.now() + 604800000 // 7 days in milliseconds
+        default: () => Date.now() + 1000 * 60 * 60 * 24 * 7
       },
     icon:{
         type:String,

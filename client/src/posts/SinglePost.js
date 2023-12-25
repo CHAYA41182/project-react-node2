@@ -45,7 +45,7 @@ const SinglePost = () => {
         <div className="single-container">
             <Link to="/posts" ><FontAwesomeIcon icon={faRightFromBracket} /></Link>
             <div className='texts'>
-                <div className='title' >
+                <div className='' >
                     <h1>{post.title}</h1>
                 </div>
                 <h3>{post.author}</h3>

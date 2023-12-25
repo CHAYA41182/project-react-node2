@@ -58,13 +58,14 @@ const Users = () => {
     const handleSort = (e) => {
         console.log(e.target.value)
         if (e.target.value === 'name') {
-            setFilteredUsers(users.sort((a, b) => a.name.localeCompare(b.name)))
+            setFilteredUsers([...users].sort((a, b) => a.name.localeCompare(b.name)))
         }
         else if (e.target.value === 'email') {
-            setFilteredUsers(users.sort((a, b) => a.email.localeCompare(b.email)))
+            setFilteredUsers([...users].sort((a, b) => a.email.localeCompare(b.email)))
         }
         else if (e.target.value === 'phone') {
-            setFilteredUsers(users.sort((a, b) => a.phone.localeCompare(b.phone)))
+            
+            setFilteredUsers([...users].sort((a, b) => (a.phone || '').localeCompare(b.phone || '')))
         }
     }
 
@@ -77,6 +78,11 @@ const Users = () => {
         <div className='elements'>
             <Link to="/users/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Users</h1>
+            <div className='actions'>
+            <div className='search'>
+                <FontAwesomeIcon icon={faSearch} className='search-icon' />
+                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='sort-input form-input' />
+            </div>
             <div className='sort'>
                 <label htmlFor="sort">Sort by:</label>
                 <select name="sort" id="sort" className='form-input sort-input' onChange={handleSort}>
@@ -85,27 +91,26 @@ const Users = () => {
                     <option value="phone">Phone</option>
                 </select>
             </div>
-            <div className='search'>
-                <FontAwesomeIcon icon={faSearch} className='search-icon' />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='sort-input form-input' />
-                           </div>
+            </div>
+
             {
                 filteredUsers.length === 0 ? <h3>No have users matching your search</h3> :
-                filteredUsers.map(user => (
-                    <div key={user.id} className='item'>
-                        <div className='texts'>
-                            <div className='title' onClick={(e) => { navigate(`/users/${user._id}`) }}  >
-                                <div className='char' >{user.name[0]}</div>
-                                <h3>{user.name}</h3>
+                    filteredUsers.map(user => (
+                        <div key={user.id} className='item'>
+                            <div className='texts'>
+                                <div className='title' onClick={(e) => { navigate(`/users/${user._id}`) }}  >
+                                    <div className='char' >{user.name[0]}</div>
+                                    <h3>{user.name}</h3>
+                                </div>
+                                <h5 className='description'>{user.email}</h5>
+                                <h5 className='phone'>{user.phone}</h5>
                             </div>
-                            <h5 className='description'>{user.email}</h5>
+                            <div className='btns'>
+                                <button onClick={handleEdit} id={user._id} ><FontAwesomeIcon icon={faEdit} /></button>
+                                <button onClick={handleDelete} id={user._id} ><FontAwesomeIcon icon={faTrash} /></button>
+                            </div>
                         </div>
-                        <div className='btns'>
-                            <button onClick={handleEdit} id={user._id} ><FontAwesomeIcon icon={faEdit} /></button>
-                            <button onClick={handleDelete} id={user._id} ><FontAwesomeIcon icon={faTrash} /></button>
-                        </div>
-                    </div>
-                ))
+                    ))
             }
         </div>
     );

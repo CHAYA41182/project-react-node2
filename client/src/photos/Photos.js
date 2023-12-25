@@ -47,9 +47,9 @@ const Photos = () => {
     const handleSort = (e) => {
         console.log(e.target.value);
         if (e.target.value === 'name') {
-            setFilteredPhotos(photos.sort((a, b) => a.title.localeCompare(b.title)));
+            setFilteredPhotos([...photos].sort((a, b) => a.title.localeCompare(b.title)));
         } else {
-            setFilteredPhotos(photos.sort((a, b) => a.album.localeCompare(b.album)));
+            setFilteredPhotos([...photos].sort((a, b) => (a.album || '').localeCompare(b.album || '')));
         }
     }
 
@@ -63,6 +63,10 @@ const Photos = () => {
             <Link to="/photos/create"><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Photos</h1>
             <div className='actions'>
+            <div className='search'>
+                <FontAwesomeIcon icon={faSearch} className='search-icon' />
+                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input'></input>            
+            </div>   
             <div className='sort'>
                 <label htmlFor="sort">Sort by:</label>
                 <select name="sort" id="sort" className='form-input sort-input' onChange={handleSort}>
@@ -70,10 +74,7 @@ const Photos = () => {
                     <option value="album">album</option>
                 </select>
             </div>
-            <div className='search'>
-                <FontAwesomeIcon icon={faSearch} className='search-icon' />
-                <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='form-input search-input'></input>            
-            </div>
+
             </div>
             {
                 filteredPhotos.length === 0 ? <h1 className='no-results'>No have photos matching your search</h1> :

@@ -68,19 +68,49 @@ const Todos = () => {
         navigate(`/todos/${id}/edit`)
     }
 
+    const handleSort = (e) => {
+        console.log(e.target.value)
+        if (e.target.value === 'title') {
+            setFilteredTodos([...todos].sort((a, b) => a.title.localeCompare(b.title)))
+        }
+        else if (e.target.value === 'date') {
+            setFilteredTodos([...todos].sort((a, b) => new Date(a.date) - new Date(b.date)))
+        }
+        else if (e.target.value === 'status') {
+            setFilteredTodos([...todos].sort((a, b) => a.status - b.status))
+        }
+        else if (e.target.value === 'description') {
+            setFilteredTodos([...todos].sort((a, b) => a.description.localeCompare(b.description)))
+            console.log(filteredTodos)
+        }
+        
+    }
+    
+
 
     useEffect(() => {
         fetchTodos()
     }, [])
 
-
     return (
         <div className='elements'>
             <Link to="/todos/create" ><FontAwesomeIcon icon={faPlus} className='add-btn' /></Link>
             <h1>Todos</h1>
+            <div className='actions'>
             <div className='search'>
                 <FontAwesomeIcon icon={faSearch} className='search-icon' />
                 <input type="text" value={query} onChange={handleQuery} placeholder='Search...' className='sort-input form-input' />
+            </div>
+            <div className='sort'>
+                <label htmlFor="sort" >Sort by:</label>
+                <select onChange={handleSort} className='sort-input form-input' >
+                    <option value="title">title</option>
+                    <option value="date">date</option>
+                    <option value="status">status</option>
+                    <option value="description">description</option>
+
+                </select>
+            </div>
             </div>
             {
                 filteredTodos.length === 0 ? <div className='no-results' >No have todos matching your search</div> :
@@ -92,7 +122,7 @@ const Todos = () => {
                                 <h3  >{todo.title}</h3>
                             </div>
 
-                            <p className='date' >{new Date(todo.createdAt).toLocaleDateString()}</p>
+                            <p className='date' >{new Date(todo.date).toLocaleDateString()}</p>
                             <p className='description' >{todo.description}</p>
                         </div>
                         <div className='btns'>

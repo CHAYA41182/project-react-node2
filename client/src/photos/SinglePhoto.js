@@ -44,7 +44,7 @@ const SinglePhoto = () => {
         <div className="single-container">
             <Link to="/photos" ><FontAwesomeIcon icon={faRightFromBracket} /></Link>
             <div className='texts'>
-                <div className='title'>
+                <div className=''>
                     <h1>{photo.title}</h1>
                 </div>
                 <img src={`http://localhost:7001/${photo.link}`} alt={photo.title} className='big-poto' />

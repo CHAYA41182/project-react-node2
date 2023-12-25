@@ -6,7 +6,7 @@
 
 } */
 
-Link, .Link {
+Link, .Link{
     color: #fff;
     text-decoration: none;
     font-size: 1.2rem;
@@ -22,7 +22,8 @@ Link, .Link {
 .menu ul{
     position: fixed;
     left: 0;
-    width: 140px;
+    
+    /* width: 140px; */
 }
 
 ul li {
@@ -54,6 +55,8 @@ div {
 .page {
     display: flex;
     flex-direction: row;
+    margin-left: 140px; /* תשנה לרוחב המתאים לתפריט שלך */
+
 }
 
 .photos-container {
@@ -189,6 +192,14 @@ div {
 
 }
 
+.title:hover {
+    color: #4caf50;
+}
+
+.title h3:hover {
+    text-decoration: underline;
+}
+
 .date {
     font-size: 10px;
 }
@@ -299,16 +310,15 @@ div {
 
     /* סגנון כללי לתפריט הצד */
 menu {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 250px; /* Set the width of the sidebar */
+    padding-top: 20vh; 
+    /*יישור אנכי*/
+ 
+    /* justify-content: center; */
+  }
 
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
-    left: 0;
-    background-color: #ffffff; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-    padding-top: 60px; /* Place content 60px from the top */
+  .outlet{
+    width: 100%;
+    margin-left: 140px;
   }
   
   /* הגדרת הסגנון של הקישורים בתוך התפריט */
@@ -338,6 +348,13 @@ menu {
     gap: 10px;
     margin-bottom: 20px;
   }
+  .active-menu{
+    border-bottom: 2px solid #439a00;
+    border-top: 2px solid #439a00;
+
+    
+  }
+
 
   .body{
     /* textarea גודל ה */
