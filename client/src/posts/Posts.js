@@ -102,7 +102,7 @@ const Posts = () => {
                                     <h3>{post.title}</h3>
                                 </div>
                                 <h5 className='description'>{post.author}</h5>
-                                <p className='description'>{(String(post.body).length > 300) ? String(post.body).substring(0, 300) + '...' : post.body}</p>
+                                <p className='description'>{(String(post.body).length > 350) ? String(post.body).substring(0, 350) + '...' : post.body}</p>
                             </div>
                             <div className='btns'>
                                 <button onClick={handleEdit} id={post._id} ><FontAwesomeIcon icon={faEdit} /></button>

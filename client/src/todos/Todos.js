@@ -87,7 +87,6 @@ const Todos = () => {
     }
     
 
-
     useEffect(() => {
         fetchTodos()
     }, [])
